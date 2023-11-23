@@ -455,7 +455,9 @@ async function showActivityModal(activityId, dataStore, dataStoreRelatedActiviti
 
 // On load code
 
-window.onload = async () => {
+//window.onload = async () => {
+window.Wized = window.Wized || [];
+window.Wized.push(async (Wized) => {
   mapboxgl.accessToken =
     'pk.eyJ1Ijoiam9yZGFub25hcnJpdmFsIiwiYSI6ImNsbHY4bW0zaTFxZ3czZ256bjlqODZmNncifQ.1xHX4Xvmvz9KNYmrZdFybA';
 
@@ -464,9 +466,11 @@ window.onload = async () => {
   console.log('Window loaded');
 
   Wized.request.awaitAllPageLoad(async () => {
-    Wized.request.await('Load Trip Page');
+    //Wized.request.await('Load Trip Page');
+    Wized.requests.waitFor('Load_Trip_Page');
 
-    const dataStore = await Wized.data.get('r.18.d');
+    //const dataStore = await Wized.data.get('r.18.d');
+    const dataStore = await Wized.requests.waitFor("Load_Trip_Page");
     const dataStoreRelatedActivities = { ...dataStore };
     //setTimeout(() => {
     const urlParams = new URLSearchParams(window.location.search);
