@@ -1,6 +1,4 @@
 // Conditional import/require for Node.js built-in modules
-<script type="text/typescript">
-
 let path, os, crypto;
 
 if (typeof process !== 'undefined' && process.versions && process.versions.node) {
@@ -1080,6 +1078,5 @@ window.onload = async () => {
   });
   //  }, 2000); // Waits for 2 seconds
 };
-</script>
 
 //
