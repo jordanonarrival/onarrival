@@ -27,7 +27,7 @@ document.querySelector("[activity-data='liked']").removeAttribute("srcset")
 function getDestinationIdFromActivityId(activityId, dataStore) {
   console.log(dataStore)
   // Loop through guide recommendations to find the matching activity
-  for (const guide of dataStore._guide_of_trips) {
+  for (const guide of dataStore.data._guide_of_trips) {
     for (const recommendation of guide._guide_recommendations) {
       const place = recommendation._place
       if (place && place.id === activityId) {
@@ -79,7 +79,7 @@ function updateActivityUI(activity) {
 }
 
 function findActivityByIdInDataStore(dataStore, relatedActivityId) {
-  for (const guide of dataStore._guide_of_trips) {
+  for (const guide of dataStore.data._guide_of_trips) {
     for (const activity of guide._guide_recommendations) {
       if (String(activity.place_id) === relatedActivityId) {
         return activity
@@ -94,9 +94,9 @@ async function renderRelatedActivities(activityId, destinationId, dataStore) {
   console.log("destination id --------", destinationId)
   console.log("activityId", activityId)
   console.log("datastoreeeee", dataStore)
-  console.log("guide id", dataStore._guide_of_trips)
+  console.log("guide id", dataStore.data._guide_of_trips)
   // Step 1: Find the destination in _guide_of_trips by its id
-  const targetDestination = dataStore._guide_of_trips.find(
+  const targetDestination = dataStore.data._guide_of_trips.find(
     guide => String(guide.id) === String(destinationId)
   )
 
@@ -229,7 +229,7 @@ async function showActivityModal(
   dataStoreRelatedActivities,
   destinationId
 ) {
-  const clickedGuide = dataStore._guide_of_trips.find(guide =>
+  const clickedGuide = dataStore.data._guide_of_trips.find(guide =>
     guide._guide_recommendations.some(
       // Fixed comparison
       activity => activity.place_id.toString() === activityId.toString()
@@ -528,7 +528,7 @@ window.onload = async () => {
     const parentElement = document.querySelector('[wized="destination_nav"]')
     console.log("dataStore:", dataStore)
 
-    dataStore._guide_of_trips.forEach(guide => {
+    dataStore.data._guide_of_trips.forEach(guide => {
       guide._guide_recommendations = guide._guide_recommendations.filter(
         destination => {
           const place = destination._place
@@ -644,7 +644,7 @@ window.onload = async () => {
 
     let startingPoint = [0, 0]
     if (destinationId) {
-      for (const guide of dataStore._guide_of_trips) {
+      for (const guide of dataStore.data._guide_of_trips) {
         if (guide.id.toString() === destinationId) {
           const destination = guide._destination && guide._destination[0]
           startingPoint = [destination.mobi_lng, destination.mobi_lat]
@@ -652,7 +652,7 @@ window.onload = async () => {
         }
       }
     } else {
-      const firstGuideOfTrip = dataStore._guide_of_trips[0]
+      const firstGuideOfTrip = dataStore.data._guide_of_trips[0]
       const firstDestination =
         firstGuideOfTrip._destination && firstGuideOfTrip._destination[0]
       startingPoint = [firstDestination.mobi_lng, firstDestination.mobi_lat]
@@ -707,11 +707,11 @@ window.onload = async () => {
         console.log(`Destination ID clicked: ${destinationId}`) // Debugging log
 
         // Find the corresponding guide using the destinationId
-        const guide = dataStore._guide_of_trips.find(
+        const guide = dataStore.data._guide_of_trips.find(
           g => g.id.toString() === destinationId
         )
 
-        console.log(dataStore._guide_of_trips)
+        console.log(dataStore.data._guide_of_trips)
         console.log(destinationId)
 
         if (guide) {
@@ -757,7 +757,7 @@ window.onload = async () => {
       let minDistance = Infinity
 
       // Find the closest destination
-      dataStore._guide_of_trips.forEach(g => {
+      dataStore.data._guide_of_trips.forEach(g => {
         const destination = g
         if (destination.id) {
           const destinationCenter = [
@@ -1101,7 +1101,7 @@ window.onload = async () => {
 
       let activityFound = false
 
-      dataStore._guide_of_trips.forEach(guide => {
+      dataStore.data._guide_of_trips.forEach(guide => {
         console.log(`Processing guide ID: ${guide.id}`)
 
         const destinations = guide._guide_recommendations || []
