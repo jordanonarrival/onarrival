@@ -518,7 +518,7 @@ window.onload = async () => {
   window.Wized = window.Wized || []
   window.Wized.push(async Wized => {
     //const dataStore = await Wized.data.get('r.18.d');
-    const dataStore = await Wized.requests.waitFor("Load_Trip_Page")
+    const dataStore = await Wized.requests.waitFor("Load_Map_Page")
     const dataStoreRelatedActivities = { ...dataStore }
     //setTimeout(() => {
     const urlParams = new URLSearchParams(window.location.search)
