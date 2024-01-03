@@ -443,18 +443,18 @@ async function showActivityModal(
           });
           
           // Save updated states to localStorage
-          localStorage.setItem("favoritesState", JSON.stringify(favoritesState))
-          localStorage.setItem(
-            "isManuallyChanged",
-            JSON.stringify(isManuallyChanged)
-          )
+          //localStorage.setItem("favoritesState", JSON.stringify(favoritesState))
+          //localStorage.setItem(
+            //"isManuallyChanged",
+            //JSON.stringify(isManuallyChanged)
+         // )
 
           // Update UI
-          updateUI(element, isFavorite)
+         // updateUI(element, isFavorite)
 
-          console.log(
-            `Updated favoritesState and isManuallyChanged for parentPlaceId ${parentPlaceId}`
-          )
+          //console.log(
+            //`Updated favoritesState and isManuallyChanged for parentPlaceId ${parentPlaceId}`
+         // )
         })
       })
   }
