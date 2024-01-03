@@ -430,6 +430,18 @@ async function showActivityModal(
           favoritesState[parentPlaceId] = isFavorite
           isManuallyChanged[parentPlaceId] = true
 
+          window.Wized = window.Wized || [];
+          window.Wized.push(async (Wized) => {
+            if(!isFavorite){
+              const result = await Wized.requests.execute('Create_Favorite');
+              console.log(result);
+            }
+            else{
+              const result = await Wized.requests.execute('Delete_Favorite');
+              console.log(result);
+            }
+          });
+          
           // Save updated states to localStorage
           localStorage.setItem("favoritesState", JSON.stringify(favoritesState))
           localStorage.setItem(
