@@ -425,8 +425,8 @@ async function showActivityModal(
           )
 
           // Toggle the favorite state
-          const isFavorite = !favoritesState[parentPlaceId]
-          console.log(`New favorite state after toggle: ${isFavorite}`)
+          //const isFavorite = !favoritesState[parentPlaceId]
+          //console.log(`New favorite state after toggle: ${isFavorite}`)
 
           // Update the state and set it as manually changed
           favoritesState[parentPlaceId] = isFavorite
