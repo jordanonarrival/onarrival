@@ -368,9 +368,11 @@ async function showActivityModal(
     ? clickedActivity._place.google_sunday_hours
     : "Not added"
 
+  const favoritesState = Array.isArray(clickedActivity._place._favorite_of_user_of_place) && clickedActivity._place._favorite_of_user_of_place.length !== 0
+
   // Initialize states from localStorage or create new empty objects
-  const favoritesState =
-    JSON.parse(localStorage.getItem("favoritesState")) || {}
+  //const favoritesState =
+    //JSON.parse(localStorage.getItem("favoritesState")) || {}
   const isManuallyChanged =
     JSON.parse(localStorage.getItem("isManuallyChanged")) || {}
 
