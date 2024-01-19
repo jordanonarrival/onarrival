@@ -281,7 +281,8 @@ window.onload = async () => {
 
         // Clear the activity_id from URL parameters
         urlParams.delete('activity_id');
-        history.replaceState({}, '', `${location.pathname}?${urlParams}`);
+        // history.replaceState({}, '', `${location.pathname}?${urlParams}`);
+        Wized.data.n.parameter.activity_id = '';
         console.log('Replaced State');
 
         // Logic to update 'activeCoordinates' based on clicked 'guide.id'
@@ -438,7 +439,9 @@ window.onload = async () => {
             const urlParams = new URLSearchParams(window.location.search);
             urlParams.set('destination_id', destinationId);
             urlParams.delete('activity_id');
-            history.replaceState({}, '', `${location.pathname}?${urlParams}`);
+            //history.replaceState({}, '', `${location.pathname}?${urlParams}`);
+            Wized.data.n.parameter.activity_id = '';
+            Wized.data.n.parameter.destination_id = destinationId;
             console.log('Replaced State');
           }
         }
@@ -619,7 +622,8 @@ window.onload = async () => {
         url.search = urlParams.toString();
 
         // Update the URL without reloading the page
-        history.replaceState(null, null, url.toString());
+        // history.replaceState(null, null, url.toString());
+        Wized.data.n.parameter.activity_id = '';
         console.log('Replaced State');
 
         updateMarkerFromUrl();
@@ -640,8 +644,9 @@ window.onload = async () => {
 
         // Zet de destination_id weer terug naar de oorspronkelijke waarde
 
-        history.pushState({}, '', `${location.pathname}?${urlParams}`);
-
+        //history.pushState({}, '', `${location.pathname}?${urlParams}`);
+        Wized.data.n.parameter.activity_id = activity.place_id;
+        Wized.data.n.parameter.destination_id = dynamicDestinationId;
         // Update active and selected markers
         activeMarker = activity.id;
         selectedMarker = activity.place_id;
@@ -720,8 +725,9 @@ window.onload = async () => {
 
           // Zet de destination_id weer terug naar de oorspronkelijke waarde
 
-          history.pushState({}, '', `${location.pathname}?${urlParams}`);
-
+          //history.pushState({}, '', `${location.pathname}?${urlParams}`);
+          Wized.data.n.parameter.activity_id = activity.place_id;
+          Wized.data.n.parameter.destination_id = dynamicDestinationId;
           // Update active and selected markers
           activeMarker = activity.id;
           selectedMarker = activity.place_id;
