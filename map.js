@@ -191,8 +191,8 @@ async function renderRelatedActivities(activityId, destinationId, dataStore) {
 const markersMap = [];
 
 function updateMarkerFromUrl() {
-  const urlParams = new URLSearchParams(window.location.search);
-  const activityId = urlParams.get('activity_id');
+  // const urlParams = new URLSearchParams(window.location.search);
+  const activityId = Wized.data.n.parameter.activity_id;
 
   // Reset all markers to default appearance
   Object.values(markersMap).forEach((marker) => {
@@ -437,7 +437,7 @@ window.onload = async () => {
 
             // Update the URL parameters
             const urlParams = new URLSearchParams(window.location.search);
-            urlParams.set('destination_id', destinationId);
+            //urlParams.set('destination_id', destinationId);
             urlParams.delete('activity_id');
             //history.replaceState({}, '', `${location.pathname}?${urlParams}`);
             Wized.data.n.parameter.activity_id = '';
@@ -612,13 +612,13 @@ window.onload = async () => {
         activeMarker = null;
         selectedMarker = null;
         // Delete the 'activity_id' parameter from URLSearchParams object
-        urlParams.delete('activity_id');
+        //urlParams.delete('activity_id');
 
         // Create a new URL object from the current URL
-        const url = new URL(window.location.href);
+        //const url = new URL(window.location.href);
 
         // Update the search parameters of the URL
-        url.search = urlParams.toString();
+        //url.search = urlParams.toString();
 
         // Update the URL without reloading the page
         // history.replaceState(null, null, url.toString());
@@ -638,8 +638,8 @@ window.onload = async () => {
         );
 
         // Update alleen de activity_id in de URL
-        urlParams.set('activity_id', activity.place_id);
-        urlParams.set('destination_id', dynamicDestinationId);
+        //urlParams.set('activity_id', activity.place_id);
+        //urlParams.set('destination_id', dynamicDestinationId);
 
         // Zet de destination_id weer terug naar de oorspronkelijke waarde
 
@@ -719,8 +719,8 @@ window.onload = async () => {
           );
 
           // Update alleen de activity_id in de URL
-          urlParams.set('activity_id', activity.place_id);
-          urlParams.set('destination_id', dynamicDestinationId);
+          //urlParams.set('activity_id', activity.place_id);
+          //urlParams.set('destination_id', dynamicDestinationId);
 
           // Zet de destination_id weer terug naar de oorspronkelijke waarde
 
