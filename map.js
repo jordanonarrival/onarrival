@@ -192,7 +192,7 @@ const markersMap = [];
 
 function updateMarkerFromUrl() {
   // const urlParams = new URLSearchParams(window.location.search);
-  const activityId = Wized.data.n.parameter.activity_id;
+  const activityId = Number(Wized.data.n.parameter.activity_id);
 
   // Reset all markers to default appearance
   Object.values(markersMap).forEach((marker) => {
@@ -644,8 +644,8 @@ window.onload = async () => {
         // Zet de destination_id weer terug naar de oorspronkelijke waarde
 
         //history.pushState({}, '', `${location.pathname}?${urlParams}`);
-        Wized.data.n.parameter.activity_id = activity.place_id;
-        Wized.data.n.parameter.destination_id = dynamicDestinationId;
+        Wized.data.n.parameter.activity_id = `${activity.place_id}`;
+        Wized.data.n.parameter.destination_id = `${dynamicDestinationId}`;
         // Update active and selected markers
         activeMarker = activity.id;
         selectedMarker = activity.place_id;
@@ -725,8 +725,8 @@ window.onload = async () => {
           // Zet de destination_id weer terug naar de oorspronkelijke waarde
 
           //history.pushState({}, '', `${location.pathname}?${urlParams}`);
-          Wized.data.n.parameter.activity_id = activity.place_id;
-          Wized.data.n.parameter.destination_id = dynamicDestinationId;
+          Wized.data.n.parameter.activity_id = `${activity.place_id}`;
+          Wized.data.n.parameter.destination_id = `${dynamicDestinationId}`;
           // Update active and selected markers
           activeMarker = activity.id;
           selectedMarker = activity.place_id;
