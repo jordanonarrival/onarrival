@@ -223,7 +223,7 @@ window.onload = async () => {
   mapboxgl.accessToken =
     'pk.eyJ1Ijoiam9yZGFub25hcnJpdmFsIiwiYSI6ImNsbHY4bW0zaTFxZ3czZ256bjlqODZmNncifQ.1xHX4Xvmvz9KNYmrZdFybA';
 
-  document.querySelector('[wized=activity_info_modal]').style.display = 'none';
+  // document.querySelector('[wized=activity_info_modal]').style.display = 'none';
 
   console.log('Window loaded');
 
@@ -607,8 +607,7 @@ window.onload = async () => {
       });
 
       map.on('click', () => {
-        document.querySelector('[wized=activity_info_modal]').style.display =
-          'none';
+        // document.querySelector('[wized=activity_info_modal]').style.display = 'none';
 
         activeMarker = null;
         selectedMarker = null;
@@ -755,17 +754,20 @@ window.onload = async () => {
             if (!closeFlag) {
               console.log('Inside closeFlag check');
 
-              document.querySelector(
-                '[wized=activity_info_modal]'
-              ).style.display = 'none';
+              // document.querySelector(
+              //   '[wized=activity_info_modal]'
+              // ).style.display = 'none';
               console.log('Modal closed');
 
-              urlParams.delete('activity_id');
-              console.log('Deleted activity_id');
+              // urlParams.delete('activity_id');
+              // console.log('Deleted activity_id');
 
               const url = new URL(window.location.href);
               url.search = urlParams.toString();
-              history.replaceState(null, null, url.toString());
+              // history.replaceState(null, null, url.toString());
+
+              Wized.data.n.parameter.activity_id = '';
+              Wized.data.n.parameter.destination_id = '';
               console.log('Replaced State');
 
               closeFlag = true;
