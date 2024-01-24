@@ -267,11 +267,11 @@ window.onload = async () => {
       console.log(`Created anchor element with destination ID: ${guide.id}`);
       parentElement.appendChild(anchorElement);
 
-      renderRelatedActivities(
-        activityId,
-        destinationId,
-        dataStoreRelatedActivities
-      ); // Pass the new destinationId
+      //renderRelatedActivities(
+        //activityId,
+        //destinationId,
+       // dataStoreRelatedActivities
+      //); // Pass the new destinationId
 
       // Add click event
       anchorElement.addEventListener('click', function () {
