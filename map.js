@@ -646,6 +646,7 @@ window.onload = async () => {
         //history.pushState({}, '', `${location.pathname}?${urlParams}`);
         Wized.data.n.parameter.activity_id = `${activity.place_id}`;
         Wized.data.n.parameter.destination_id = `${dynamicDestinationId}`;
+        Wized.data.v.activity_note = `${activity.note}`
         // Update active and selected markers
         activeMarker = activity.id;
         selectedMarker = activity.place_id;
