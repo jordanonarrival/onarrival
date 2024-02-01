@@ -398,6 +398,8 @@ window.onload = async () => {
       }
     }
 
+    window.flyToAndSetActiveGlobal = flyToAndSetActive;
+
     // Listen for clicks on elements with data-destination-id attribute
     document.querySelectorAll('[data-destination-id]').forEach((item) => {
       item.addEventListener('click', function () {
