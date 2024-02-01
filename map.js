@@ -217,32 +217,6 @@ function updateMarkerFromUrl() {
   }
 }
 
-    function flyToAndSetActive(place) {
-      console.log('Fly to place', place);
-
-      const offsetInRem = 10;
-      const offsetInPixels = offsetInRem * 16; // Convert rem to pixels, assuming 1 rem = 16px
-
-      map.flyTo({
-        center: [place.google_lng, place.google_lat],
-        zoom: 15,
-        offset: [offsetInPixels, 0], // Adding the offset here
-      });
-
-      const newActiveMarker = document.querySelector(
-        `[marker_activity_id="${place.id}"]`
-      );
-
-      const imageUrlActive = place._place_category.category_icon_active.url;
-
-      if (newActiveMarker) {
-        newActiveMarker.style.border = '2px solid #636BFF';
-        newActiveMarker.style.backgroundImage = `url("${imageUrlActive}")`;
-
-        activeMarker = newActiveMarker;
-      }
-    }
-
 // On load code
 
 window.onload = async () => {
@@ -398,6 +372,31 @@ window.onload = async () => {
 
     let activeMarker = null; // Initialize activeMarker outside of map.on("load")
 
+        function flyToAndSetActive(place) {
+      console.log('Fly to place', place);
+
+      const offsetInRem = 10;
+      const offsetInPixels = offsetInRem * 16; // Convert rem to pixels, assuming 1 rem = 16px
+
+      map.flyTo({
+        center: [place.google_lng, place.google_lat],
+        zoom: 15,
+        offset: [offsetInPixels, 0], // Adding the offset here
+      });
+
+      const newActiveMarker = document.querySelector(
+        `[marker_activity_id="${place.id}"]`
+      );
+
+      const imageUrlActive = place._place_category.category_icon_active.url;
+
+      if (newActiveMarker) {
+        newActiveMarker.style.border = '2px solid #636BFF';
+        newActiveMarker.style.backgroundImage = `url("${imageUrlActive}")`;
+
+        activeMarker = newActiveMarker;
+      }
+    }
 
     // Listen for clicks on elements with data-destination-id attribute
     document.querySelectorAll('[data-destination-id]').forEach((item) => {
